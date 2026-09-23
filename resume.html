@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Bharathkumar P | Software Developer</title>
+    <meta name="description" content="Resume of Bharathkumar P — Computer Science graduate, Full Stack Developer.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #090d16;
+            --bg-card: rgba(255,255,255,0.04);
+            --text: #f0f0f5;
+            --muted: #8892b0;
+            --accent: #a855f7;
+            --cyan: #06b6d4;
+            --gradient: linear-gradient(135deg, #d946ef 0%, #8b5cf6 50%, #06b6d4 100%);
+            --border: rgba(255,255,255,0.08);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Print button bar */
+        .print-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9,13,22,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .print-bar .back-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+        .print-bar .back-link:hover { color: var(--text); }
+        .print-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(139,92,246,0.3);
+        }
+
+        /* Resume container */
+        .resume {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 32px 60px;
+        }
+
+        /* Header */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+        .resume-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .resume-header .role {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .resume-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+        .resume-contacts a {
+            color: var(--muted);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .resume-contacts a:hover { color: var(--accent); }
+
+        /* Section */
+        .resume-section {
+            margin-bottom: 36px;
+        }
+        .resume-section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+            border-image: var(--gradient) 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .resume-section-title i { color: var(--accent); }
+
+        /* Card items */
+        .resume-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            backdrop-filter: blur(12px);
+        }
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .resume-item-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .resume-item-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(168,85,247,0.1);
+            padding: 3px 12px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+        .resume-item h4 {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .resume-item ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .resume-item li {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+        .resume-item .gpa {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(16,185,129,0.1);
+            color: #10b981;
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+
+        /* Skills inline */
+        .skills-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skills-inline span {
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        /* Tech tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .tech-tags span {
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .cert-item i { color: var(--accent); font-size: 1.1rem; }
+        .cert-item .cert-title { font-size: 0.8rem; font-weight: 700; }
+        .cert-item .cert-issuer { font-size: 0.7rem; color: var(--muted); }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            @page { margin: 0.5in; size: A4; }
+
+            body {
+                background: white !important;
+                color: #1a1a2e !important;
+                font-size: 11pt;
+            }
+            .print-bar { display: none !important; }
+
+            .gradient-text {
+                -webkit-text-fill-color: #7c3aed !important;
+                color: #7c3aed !important;
+            }
+
+            .resume { margin: 0; padding: 0; }
+
+            .resume-header, .resume-item, .cert-item {
+                background: #f8f9fa !important;
+                border-color: #e2e8f0 !important;
+                backdrop-filter: none !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .resume-header {
+                padding: 20px;
+                margin-bottom: 24px;
+            }
+            .resume-header h1 { font-size: 1.8rem; }
+
+            .resume-section { margin-bottom: 20px; }
+            .resume-section-title {
+                font-size: 1rem;
+                border-bottom-color: #7c3aed;
+                border-image: none;
+            }
+            .resume-section-title i { color: #7c3aed; }
+
+            .resume-item { padding: 14px 18px; margin-bottom: 8px; }
+            .resume-item-date {
+                background: #f3e8ff !important;
+                color: #7c3aed !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .resume-item li, .resume-item h4 { color: #4a5568 !important; }
+
+            .skills-inline span, .tech-tags span {
+                background: #f3e8ff !important;
+                border-color: #e9d5ff !important;
+                color: #1a1a2e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .resume-contacts a { color: #4a5568 !important; }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .resume { padding: 0 16px 40px; }
+            .resume-header { padding: 24px 16px; }
+            .resume-header h1 { font-size: 1.8rem; }
+            .resume-contacts { gap: 12px; font-size: 0.75rem; }
+            .print-bar { padding: 12px 16px; flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Bar -->
+    <div class="print-bar">
+        <a href="index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        </a>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <a href="Bharathkumar_P_Resume.pdf" download="Bharathkumar_P_Resume.pdf" class="print-btn" style="text-decoration: none; background: rgba(255,255,255,0.1); border: 1px solid var(--border);">
+                <i class="fa-solid fa-file-pdf"></i> Download Resume PDF
+            </a>
+            <button class="print-btn" onclick="window.print()">
+                <i class="fa-solid fa-print"></i> Print / Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <div class="resume">
+        <!-- Header -->
+        <div class="resume-header">
+            <h1 class="gradient-text">Bharathkumar P</h1>
+            <div class="role">Software Developer | Full Stack Developer</div>
+            <div class="resume-contacts">
+                <a href="mailto:bharathkumarp234@gmail.com"><i class="fa-solid fa-envelope"></i> bharathkumarp234@gmail.com</a>
+                <a href="tel:+919384428341"><i class="fa-solid fa-phone"></i> +91 9384428341</a>
+                <span><i class="fa-solid fa-location-dot"></i> Chennai, Tamil Nadu</span>
+                <a href="https://linkedin.com/in/bharath-kumar-p-1548b025b" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/BHARATHKUMAR011" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </div>
+
+        <!-- Objective -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-bullseye"></i> Career Objective</div>
+            <div class="resume-item">
+                <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.8;">
+                    Entry-level Software Developer with strong foundations in Java, Data Structures, Object-Oriented Programming, and Full Stack Web Development. Seeking opportunities to apply my skills in React, Node.js, MongoDB, and MySQL to build impactful software solutions while contributing to team success and continuous learning.
+                </p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-code"></i> Technical Skills</div>
+            <div class="resume-item">
+                <div style="margin-bottom: 12px;">
+                    <strong style="font-size: 0.8rem;">Languages:</strong>
+                    <div class="skills-inline" style="margin-top: 6px;">
+                        <span>Java</span><span>Python</span><span>C</span><span>JavaScript (ES6+)</span>
+                    </div>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <strong style="font-size: 0.8rem;">Frontend:</strong>
+                    <div class="skills-inline" style="margin-top: 6px;">
+                        <span>React.js</span><span>HTML5</span><span>CSS3</span><span>Responsive Design</span>
+                    </div>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <strong style="font-size: 0.8rem;">Backend & Database:</strong>
+                    <div class="skills-inline" style="margin-top: 6px;">
+                        <span>Node.js</span><span>Express.js</span><span>Spring Boot</span><span>MongoDB</span><span>MySQL</span><span>REST APIs</span>
+                    </div>
+                </div>
+                <div>
+                    <strong style="font-size: 0.8rem;">Tools & Others:</strong>
+                    <div class="skills-inline" style="margin-top: 6px;">
+                        <span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>JWT</span><span>Bcrypt</span><span>Vite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-diagram-project"></i> Projects</div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>Habit Tracker Application <a href="https://github.com/BHARATHKUMAR011/Habit-Tracker" target="_blank" style="font-size:0.75rem; font-weight:normal; margin-left:8px; color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> Repo</a> <a href="https://habit-tracker-smoky-theta.vercel.app/" target="_blank" style="font-size:0.75rem; font-weight:normal; margin-left:4px; color:#10b981; text-decoration:none;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a></h3>
+                    <span class="resume-item-date">MERN Stack</span>
+                </div>
+                <ul>
+                    <li>Built a full-stack application for users to create, update, delete and monitor daily habits.</li>
+                    <li>Implemented JWT authentication, bcrypt password hashing, protected routes, and user-specific data access.</li>
+                    <li>Added daily completion toggling, consecutive streak calculation, validation, and responsive UI updates.</li>
+                </ul>
+                <div class="tech-tags">
+                    <span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>Vite</span>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>INOX Theatre Movie Booking System <a href="https://github.com/BHARATHKUMAR011/INOX-Theatre-Movie-Booking-System" target="_blank" style="font-size:0.75rem; font-weight:normal; margin-left:8px; color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> Repo</a></h3>
+                    <span class="resume-item-date">React + MySQL</span>
+                </div>
+                <ul>
+                    <li>Engineered a full-stack movie ticketing Single Page Application (SPA).</li>
+                    <li>Designed an interactive UI featuring dynamic seat-selection and automated e-ticket generation.</li>
+                    <li>Implemented JWT authentication with bcrypt password hashing to ensure secure, private user data.</li>
+                </ul>
+                <div class="tech-tags">
+                    <span>React.js</span><span>Node.js</span><span>MySQL</span><span>REST APIs</span>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>Insider Threat Detection System <a href="https://github.com/BHARATHKUMAR011/AI-Powered-Insider-Threat-Detection-System" target="_blank" style="font-size:0.75rem; font-weight:normal; margin-left:8px; color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> Repo</a></h3>
+                    <span class="resume-item-date">Machine Learning</span>
+                </div>
+                <ul>
+                    <li>Developed an ML-based insider threat detection system.</li>
+                    <li>Performed data preprocessing and feature engineering on complex system metrics.</li>
+                    <li>Implemented Isolation Forest and One-Class SVM algorithms with Streamlit interface and SHAP model explainability.</li>
+                </ul>
+                <div class="tech-tags">
+                    <span>Python</span><span>Scikit-learn</span><span>Streamlit</span><span>SHAP</span><span>Pandas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-briefcase"></i> Internship Experience</div>
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>Web Development Intern</h3>
+                    <span class="resume-item-date">June – August 2025</span>
+                </div>
+                <h4>Shahar Technologies OPC Private Limited, Madurai</h4>
+                <ul>
+                    <li>Developed and maintained responsive web pages ensuring cross-browser compatibility.</li>
+                    <li>Collaborated closely with design teams to translate UI/UX designs into efficient frontend code.</li>
+                    <li>Executed and optimized CRUD operations using SQL database structures.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>B.E. Computer Science & Engineering</h3>
+                    <span class="resume-item-date">2022 – 2026</span>
+                </div>
+                <h4>University College of Engineering, BIT Campus, Trichy</h4>
+                <span class="gpa">CGPA: 8.01 / 10</span>
+            </div>
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <h3>Higher Secondary Schooling (HSC & SSLC)</h3>
+                </div>
+                <h4>SJSV HSS, Villupuram</h4>
+                <ul>
+                    <li>HSC Score: 84.6%</li>
+                    <li>SSLC Score: 80.3%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="resume-section">
+            <div class="resume-section-title"><i class="fa-solid fa-certificate"></i> Certifications</div>
+            <div class="cert-item">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                    <div class="cert-title">Web Development Intern Certification</div>
+                    <div class="cert-issuer">Shahar Technologies</div>
+                </div>
+            </div>
+            <div class="cert-item">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                    <div class="cert-title">Employability Skills</div>
+                    <div class="cert-issuer">Titan LEAP & Naandi Foundation</div>
+                </div>
+            </div>
+            <div class="cert-item">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                    <div class="cert-title">AI Fluency Training</div>
+                    <div class="cert-issuer">Naan Mudhalvan & Microsoft</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
