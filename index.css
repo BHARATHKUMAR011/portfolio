@@ -1297,7 +1297,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 14. Contact Section */
 .contact-grid {
     display: grid;
-    grid-template-columns: 5fr 7fr;
+    grid-template-columns: 1fr;
     gap: 48px;
 }
 
@@ -1355,86 +1355,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-main);
-}
-
-.contact-form {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    border: var(--card-border);
-    padding: 36px;
-    border-radius: var(--radius-cards);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.form-row .form-group {
-    margin-bottom: 0;
-}
-
-.form-group label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.form-group input, 
-.form-group textarea {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 14px 18px;
-    color: #ffffff;
-    font-size: 0.875rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-.form-group input:focus, 
-.form-group textarea:focus {
-    border-color: var(--accent-solid);
-    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
-}
-
-.form-group textarea {
-    resize: none;
-    min-height: 120px;
-}
-
-.form-submit-btn {
-    width: 100%;
-    background: var(--accent-gradient);
-    color: #ffffff;
-    padding: 16px;
-    border-radius: var(--radius-buttons);
-    font-weight: 700;
-    font-size: 0.95rem;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-    box-shadow: 0 4px 14px rgba(168, 85, 247, 0.3);
-}
-
-.form-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
 }
 
 .typing-highlight {
@@ -1689,10 +1609,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .section {
         padding: 60px 0;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
     }
     
     .about-highlights {
