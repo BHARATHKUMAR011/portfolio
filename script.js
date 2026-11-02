@@ -333,57 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Handler
-    const contactForm = document.getElementById('contact-form');
-    contactForm?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = contactForm.querySelector('button[type="submit"]');
-        if (!btn) return;
-
-        const originalContent = btn.innerHTML;
-        
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-
-        try {
-            const formData = new FormData(contactForm);
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-            const response = await fetch('https://formsubmit.co/ajax/el/rurunu', {
-                method: 'POST',
-                body: formData,
-                headers: { 
-                    'Accept': 'application/json'
-                },
-                signal: controller.signal
-            });
-            clearTimeout(timeoutId);
-
-            const contentType = response.headers.get('content-type') || '';
-            const data = contentType.includes('application/json')
-                ? await response.json()
-                : {};
-
-            if (response.ok && (data.success === true || data.success === "true")) {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                contactForm.reset();
-                setTimeout(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalContent;
-                    btn.style.background = '';
-                }, 4000);
-            } else {
-                throw new Error('The form service rejected the request.');
-            }
-        } catch (error) {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Try Again';
-            btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
-            console.error('Contact form submission failed:', error);
-        }
-    });
-
     // Header scroll effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
